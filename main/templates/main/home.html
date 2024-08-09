@@ -1,0 +1,26 @@
+<!-- main/templates/main/home.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Ehsan Soltanmohammadi</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+
+        <h1>Welcome to My Portfolio</h1>
+    </header>
+
+    
+    <main>
+        <p>Hello! I am Ehsan Soltanmohammadi, a Data Engineer and Scientist. You can view my detailed resume and portfolio by clicking the link below.</p>
+        <a href="{% url 'resume' %}" class="resume-link">View My Resume</a>
+        <a href="{% url 'new_page' %}" class="sample-link">View My Sample Data pipelien</a>
+        <a href="https://www.linkedin.com/in/ehsansm/" class="sample-link" target="_blank" rel="noopener noreferrer">LinkedIn</a> <!-- LinkedIn link -->
+    </main>
+</body>
+</html>

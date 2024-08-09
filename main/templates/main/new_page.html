@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>New Page</h1>
+        <p>Content coming soon!</p>
+        <p><a href="{% url 'home' %}" class="resume-link">Back to Home</a></p>
+        <p><a href="{% url 'resume' %}" class="resume-link">View Resume</a></p>
+    </header>
+</body>
+</html>
