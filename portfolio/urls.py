@@ -15,7 +15,9 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from main import views
 
 urlpatterns = [
@@ -23,4 +25,7 @@ urlpatterns = [
     path('resume/', views.resume, name='resume'), # Resume page route
     path('new-page/', views.new_page, name='new_page'), 
 ]
+
+# urlpatterns += static(setting.MEDIA_URL, document_root=setting.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
