@@ -10,8 +10,8 @@
             "dest":"portfolio/wsgi.py"
         },
         {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
+            "src": "main/static/(.*)",
+            "dest": "main/static/$1"
           }
     ]
 }
