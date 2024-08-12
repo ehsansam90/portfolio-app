@@ -5,10 +5,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Ehsan Sm</title>
+    <title>Home - Ehsan Soltanmohammadi</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Ehsan Soltanmohammadi - Software Data Engineer">
+    <meta property="og:description" content="Explore the portfolio of Ehsan, showcasing expertise in big data pipelines, cloud services, and machine learning.">
+    <meta property="og:image" content="{% static 'images/portfolio-thumbnail.jpg' %}">
+    <meta property="og:url" content="https://www.ehsansm-portfolio.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ehsan sm - Software Data Engineer">
+    <meta name="twitter:description" content="Explore the portfolio of Ehsan, showcasing expertise in big data pipelines, cloud services, and machine learning.">
+    <meta name="twitter:image" content="{% static 'images/portfolio-thumbnail.jpg' %}">
 </head>
+<body>
 <img src="{% static 'images/image.jpg' %}" alt="Pipeline 1" class="cover-photo">
 <body>
     <header>
