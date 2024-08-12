@@ -23,7 +23,8 @@ from main import views
 urlpatterns = [
     path('', views.home, name='home'),  # Home page route
     path('resume/', views.resume, name='resume'), # Resume page route
-    path('new-page/', views.new_page, name='new_page'), 
+    path('new-page/', views.new_page, name='new_page'),
+    path('send_message/', views.send_message, name='send_message'),
 ]
 
 # urlpatterns += static(setting.MEDIA_URL, document_root=setting.MEDIA_ROOT)

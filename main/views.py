@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect
+from django.conf import settings
+
 
 # Create your views here.
 # main/views.py
@@ -115,3 +118,18 @@ def resume(request):
 def new_page(request):
     # New blank page view
     return render(request, 'main/new_page.html')
+
+def send_message(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        # Construct the email
+        subject = f"Message from {name}"
+        email_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        recipient_list = [settings.EMAIL_HOST_USER]  # Your email address
+        send_mail(subject, email_message, email, recipient_list)
+
+        return redirect('home')  # Redirect to a thank you page or home page
+    return render(request, 'main/home.html')
