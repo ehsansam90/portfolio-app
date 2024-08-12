@@ -17,7 +17,7 @@
     </header>
 
     <h1>{{ personal_info.name }}</h1>
-    <p>Phone: {{ personal_info.phone }} | Email: 
+    <p>Email: 
         {% for email in personal_info.email %}
             <a href="mailto:{{ email }}">{{ email }}</a>{% if not forloop.last %}, {% endif %}
         {% endfor %}
