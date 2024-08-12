@@ -114,4 +114,4 @@ def resume(request):
 
 def new_page(request):
     # New blank page view
-    return render(request, 'new_page.html')
+    return render(request, 'main/new_page.html')

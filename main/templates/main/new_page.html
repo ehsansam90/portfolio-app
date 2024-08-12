@@ -3,16 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Page</title>
+    <title>Sample Data Pipelines</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>New Page</h1>
-        <p>Content coming soon!</p>
+        <h1>Sample Data Pipelines</h1>
+        <h2>Below are sample flowcharts illustrating some of the data pipelines that I have designed, deployed, and worked on</h2>
+    </header>
+    <main>
+        <section class="pipeline-container">
+            <div class="pipeline-row">
+                <div class="pipeline-image-container">
+                    <h3>ETL pipline: Azure Cloud Services</h3>
+                    <img src="{% static 'images/azure-pipeline.jpg' %}" alt="Pipeline 1" class="pipeline-image">
+                    <ul>
+                        <li>Data ingestion through Azure Functions from multiple sources</li>
+                        <li>Data storage in Azure Data Lake</li>
+                        <li>Data transformation using Azure Data Factory</li>
+                        <li>Data loading into Azure SQL Database</li>
+                        <li>Interactive data visualization with Tableau Server</li>
+                    </ul>
+                </div>
+                <div class="pipeline-image-container">
+                    <h3>ETL BigData Pipeline: AWS Cloud Services</h3>
+                    <img src="{% static 'images/aws1.jpg' %}" alt="Pipeline 2" class="pipeline-image">
+                    <ul>
+                        <li>Ingest data from both cloud resources and internal systems</li>
+                        <li>Perform data joining and processing using Amazon EMR with PySpark</li>
+                        <li>Store processed data in a centralized data lake</li>
+                        <li>Utilize AWS Lambda functions, triggered by CloudWatch events, for automation</li>
+                        <li>Load the processed data into an S3 bucket for business analytics and use</li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class="pipeline-row">
+                <div class="pipeline-image-container">
+                    <h3>ETL BigData Pipeline: Airflow hybrid Cloud Services</h3>
+                    <img src="{% static 'images/airflow1.jpg' %}" alt="Pipeline 3" class="pipeline-image">
+                    <ul>
+                        <li>Ingest data from various sources using PySpark SQL</li>
+                        <li>Extract internal information to S3 and MySQL server</li>
+                        <li>Join data using PySpark</li>
+                        <li>Extract additional internal information to MongoDB</li>
+                        <li>Load the processed data into an internal data lake</li>
+                    </ul>
+                    
+                </div>
+                <div class="pipeline-image-container">
+                    <h3>BigData Ingestion ETL: parallel processing, Docker-K8 </h3>
+                    <img src="{% static 'images/docker-k8.jpg' %}" alt="Pipeline 4" class="pipeline-image">
+                    <ul>
+                        <li>Ingest data using a Docker image deployed within a Kubernetes cluster, utilizing parallel processing scheduled with Apache Airflow</li>
+                        <li>Execute transformation processes with Docker and Kubernetes</li>
+                        <li>Ingest data from S3</li>
+                        <li>Load the processed results into an internal data lake</li>
+                        <li>Backup the results to S3</li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </section>
         <p><a href="{% url 'home' %}" class="resume-link">Back to Home</a></p>
         <p><a href="{% url 'resume' %}" class="resume-link">View Resume</a></p>
-    </header>
+    </main>
 </body>
 </html>

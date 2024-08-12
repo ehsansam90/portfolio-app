@@ -25,11 +25,12 @@ header {
 
 /* Cover Photo Container */
 .cover-photo {
-    width: 300%; /* Make the cover photo container full width */
-    height: auto; /* Height will be adjusted based on the content */
+    width: 100%; /* Ensure the cover photo fills the entire width of its container */
+    height: auto; /* Maintain aspect ratio */
     overflow: hidden; /* Hide overflow for a cleaner look */
-    position: relative; /* Positioning for absolute elements inside */
+    position: relative; /* Positioning for any absolute elements if needed */
 }
+
 
 /* Cover Photo Sizes */
 .cover-photo img {
@@ -173,4 +174,88 @@ li:hover {
         padding: 10px;
     }
 }
-s
+
+/* Pipeline Section */
+.pipeline-container {
+    max-width: 1500px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the container */
+}
+
+.pipeline-row {
+    display: flex;
+    justify-content: space-between; /* Space between images */
+    flex-wrap: wrap; /* Allow wrapping to new rows */
+    margin-bottom: 50px; /* Space between rows */
+}
+
+.pipeline-image-container {
+    flex: 1 1 47%; /* Take up 45% of the row's width */
+    margin: 0 1%; /* Space between images */
+    text-align: left; /* Center align text and list items */
+}
+
+.pipeline-image {
+    width: 100%; /* Make image take full width of container */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px; /* Space between image and list */
+}
+
+
+ul {
+    list-style-type: disc; /* Display bullet points */
+    padding-left: 20px; /* Space for bullets */
+    text-align: left; /* Align text to the left */
+    margin-top: 10px; /* Space above the list */
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pipeline-image-container {
+        flex: 1 1 100%; /* Stack images in a single column on smaller screens */
+        margin: 0 auto 20px; /* Center align images on smaller screens */
+    }
+    
+    .pipeline-row {
+        flex-direction: column;
+        align-items: center; /* Center align rows on smaller screens */
+    }
+}
+
+/* Style the unordered list container */
+.pipeline-image-container ul {
+    list-style-type: disc; /* Use disc bullets for the list */
+    padding: 10px; /* Add padding inside the box */
+    background-color: #fff; /* Background color for the box */
+    border: 1px solid #ddd; /* Border around the box */
+    border-radius: 8px; /* Rounded corners for the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for the box */
+    margin-top: 10px; /* Space above the box */
+    text-align: left; /* Align text to the left */
+    position: relative; /* For potential absolute positioning */
+}
+
+/* Style individual list items */
+.pipeline-image-container ul li {
+    margin-bottom: 10px; /* Space between items */
+    padding: 5px 0; /* Space within each item */
+    padding-left: 20px; /* Ensure enough space for bullet */
+}
+
+/* Optional: Customize bullet color */
+.pipeline-image-container ul li::marker {
+    color: #0d0d0e; /* Customize bullet color if needed */
+}
+
+
