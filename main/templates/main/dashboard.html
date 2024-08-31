@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Dashboard</h1>
+
+    <!-- Canvas elements for Chart.js -->
+    
+    <!-- New York Nearby Trends Chart -->
+    <div>
+        <h2>New York Nearby Trends</h2>
+        <canvas id="newyorkTrendsChart" width="200" height="100"></canvas>
+    </div>
+
+    <!-- San Diego Nearby Trends Chart -->
+    <div>
+        <h2>San Diego Nearby Trends</h2>
+        <canvas id="sandiegoTrendsChart" width="200" height="100"></canvas>
+    </div>
+
+    <!-- San Francisco Nearby Trends Chart -->
+    <div>
+        <h2>San Francisco Nearby Trends</h2>
+        <canvas id="sanfranciscoTrendsChart" width="200" height="100"></canvas>
+    </div>
+
+    <script>
+        // Prepare data for the New York Nearby Trends chart
+        const newyorkCtx = document.getElementById('newyorkTrendsChart').getContext('2d');
+        const newyorkData = {
+            labels: [
+                {% for record in newyork_data %}
+                    '{{ record.month }}',
+                {% endfor %}
+            ],
+            datasets: [
+            {
+                label: 'Guttenberg NJ 2023',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.guttenberg_nj_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            },
+            {
+                label: 'Guttenberg NJ 2024',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.guttenberg_nj_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            },
+            {
+                label: 'Hoboken NJ 2023',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.hoboken_nj_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(255, 159, 64, 1)',
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            },
+            {
+                label: 'Hoboken NJ 2024',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.hoboken_nj_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            },
+            {
+                label: 'Jersey City NJ 2023',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.jersey_city_nj_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            },
+            {
+                label: 'Jersey City NJ 2024',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.jersey_city_nj_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(255, 205, 86, 1)',
+                backgroundColor: 'rgba(255, 205, 86, 0.2)',
+            },
+            {
+                label: 'Union City NJ 2023',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.union_city_nj_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            },
+            {
+                label: 'Union City NJ 2024',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.union_city_nj_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            },
+            {
+                label: 'West New York NJ 2023',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.west_new_york_nj_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(255, 159, 64, 1)',
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            },
+            {
+                label: 'West New York NJ 2024',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.west_new_york_nj_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            },
+            // Existing datasets
+            {
+                label: 'Guttenberg NJ 2023',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.guttenberg_nj_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            },
+            {
+                label: 'Guttenberg NJ 2024',
+                data: [
+                    {% for record in newyork_data %}
+                        {{ record.guttenberg_nj_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            },
+            // Add more datasets for other columns if needed
+        ]
+        };
+
+        const newyorkTrendsChart = new Chart(newyorkCtx, {
+            type: 'line', // Change to 'bar' or other types if needed
+            data: newyorkData,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Prepare data for the San Diego Nearby Trends chart
+        const sandiegoCtx = document.getElementById('sandiegoTrendsChart').getContext('2d');
+        const sandiegoData = {
+            labels: [
+                {% for record in sandiego_data %}
+                    '{{ record.month }}',
+                {% endfor %}
+            ],
+            datasets: [
+    {
+        label: 'La Mesa CA 2023',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.la_mesa_ca_2023|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    },
+    {
+        label: 'La Mesa CA 2024',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.la_mesa_ca_2024|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(153, 102, 255, 1)',
+        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+    },
+    {
+        label: 'Lemon Grove CA 2023',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.lemon_grove_ca_2023|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(255, 159, 64, 1)',
+        backgroundColor: 'rgba(255, 159, 64, 0.2)',
+    },
+    {
+        label: 'Lemon Grove CA 2024',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.lemon_grove_ca_2024|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    },
+    {
+        label: 'National City CA 2023',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.national_city_ca_2023|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    },
+    {
+        label: 'National City CA 2024',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.national_city_ca_2024|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(255, 205, 86, 1)',
+        backgroundColor: 'rgba(255, 205, 86, 0.2)',
+    },
+    {
+        label: 'Santee CA 2023',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.santee_ca_2023|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    },
+    {
+        label: 'Santee CA 2024',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.santee_ca_2024|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(153, 102, 255, 1)',
+        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+    },
+    {
+        label: 'Spring Valley CA 2023',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.spring_valley_ca_2023|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(255, 159, 64, 1)',
+        backgroundColor: 'rgba(255, 159, 64, 0.2)',
+    },
+    {
+        label: 'Spring Valley CA 2024',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.spring_valley_ca_2024|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    },
+    // Existing datasets
+    {
+        label: 'La Mesa CA 2023',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.la_mesa_ca_2023|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    },
+    {
+        label: 'La Mesa CA 2024',
+        data: [
+            {% for record in sandiego_data %}
+                {{ record.la_mesa_ca_2024|default:0 }},
+            {% endfor %}
+        ],
+        borderColor: 'rgba(153, 102, 255, 1)',
+        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+    },
+    // Add more datasets for other columns if needed
+]
+
+        };
+
+        const sandiegoTrendsChart = new Chart(sandiegoCtx, {
+            type: 'line', // Change to 'bar' or other types if needed
+            data: sandiegoData,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Prepare data for the San Francisco Nearby Trends chart
+        const sanfranciscoCtx = document.getElementById('sanfranciscoTrendsChart').getContext('2d');
+        const sanfranciscoData = {
+            labels: [
+                {% for record in sanfrancisco_data %}
+                    '{{ record.month }}',
+                {% endfor %}
+            ],
+            datasets: [
+            {
+                label: 'Belvedere CA 2023',
+                data: [
+                    {% for record in sanfrancisco_data %}
+                        {{ record.belvedere_ca_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            },
+            {
+                label: 'Belvedere CA 2024',
+                data: [
+                    {% for record in sanfrancisco_data %}
+                        {{ record.belvedere_ca_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            },
+            {
+                label: 'Brisbane CA 2023',
+                data: [
+                    {% for record in sanfrancisco_data %}
+                        {{ record.brisbane_ca_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(255, 159, 64, 1)',
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            },
+            {
+                label: 'Brisbane CA 2024',
+                data: [
+                    {% for record in sanfrancisco_data %}
+                        {{ record.brisbane_ca_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            },
+            {
+                label: 'Colma CA 2024',
+                data: [
+                    {% for record in sanfrancisco_data %}
+                        {{ record.colma_ca_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            },
+            {
+                label: 'Daly City CA 2023',
+                data: [
+                    {% for record in sanfrancisco_data %}
+                        {{ record.daly_city_ca_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(255, 205, 86, 1)',
+                backgroundColor: 'rgba(255, 205, 86, 0.2)',
+            },
+            {
+                label: 'Daly City CA 2024',
+                data: [
+                    {% for record in sanfrancisco_data %}
+                        {{ record.daly_city_ca_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            },
+            // Existing datasets
+            {
+                label: 'Belvedere CA 2023',
+                data: [
+                    {% for record in sanfrancisco_data %}
+                        {{ record.belvedere_ca_2023|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            },
+            {
+                label: 'Belvedere CA 2024',
+                data: [
+                    {% for record in sanfrancisco_data %}
+                        {{ record.belvedere_ca_2024|default:0 }},
+                    {% endfor %}
+                ],
+                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            },
+            // Add more datasets for other columns if needed
+        ]
+        
+        };
+
+        const sanfranciscoTrendsChart = new Chart(sanfranciscoCtx, {
+            type: 'line', // Change to 'bar' or other types if needed
+            data: sanfranciscoData,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

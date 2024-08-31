@@ -2,6 +2,12 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from django.shortcuts import render
+
+from .models import newyorknearby_trends, sandiegonearby_trends, sanfrancisconearby_trends
 
 # Create your views here.
 # main/views.py
@@ -133,3 +139,29 @@ def send_message(request):
 
         return redirect('home')  # Redirect to a thank you page or home page
     return render(request, 'main/home.html')
+
+
+
+def dashboard_view(request):
+    # Query data from the database
+    newyork_data = newyorknearby_trends.objects.all()
+    sandiego_data = sandiegonearby_trends.objects.all()
+    sanfrancisco_data = sanfrancisconearby_trends.objects.all()
+
+    # Get field names excluding 'month'
+    newyork_fields = [f.name for f in newyorknearby_trends._meta.fields if f.name != 'month']
+    sandiego_fields = [f.name for f in sandiegonearby_trends._meta.fields if f.name != 'month']
+    sanfrancisco_fields = [f.name for f in sanfrancisconearby_trends._meta.fields if f.name != 'month']
+
+
+    # Pass data to the template
+    context = {
+        'newyork_data': newyork_data,
+        'sandiego_data': sandiego_data,
+        'sanfrancisco_data': sanfrancisco_data,
+        'newyork_fields': newyork_fields,
+        'sandiego_fields': sandiego_fields,
+        'sanfrancisco_fields': sanfrancisco_fields,
+    }
+    return render(request, 'main/dashboard.html', context)
+

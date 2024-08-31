@@ -81,12 +81,22 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# settings.py
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DATABASE_NAME', 'neondb'),
+        'USER': os.getenv('DATABASE_USER', 'neondb_owner'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'rMJI9vKh3Zop'),
+        'HOST': os.getenv('DATABASE_HOST', 'ep-curly-water-a5430hwi.us-east-2.aws.neon.tech'),
+        'PORT': os.getenv('DATABASE_PORT', '5432'),
+        'OPTIONS': {
+            'sslmode': os.getenv('DATABASE_SSLMODE', 'require'),
+        },
     }
 }
+
 
 
 # Password validation
