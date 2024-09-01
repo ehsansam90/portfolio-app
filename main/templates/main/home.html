@@ -32,15 +32,32 @@
     </header>
 
     <header>
-    <main>
-        <h3>I'm Ehsan Soltanmohammadi, a Software Data Engineer with a deep passion for designing and implementing scalable big data pipelines. I specialize in optimizing ETL processes using Kubernetes, PySpark, and Apache Airflow, while leveraging cloud services like AWS and Azure. My expertise extends to integrating machine learning techniques, utilizing tools such as Scikit-learn, Pytorch, and TensorFlow to build predictive models and enhance data-driven insights in complex domains..</h3>
-        <p><a href="{% url 'resume' %}" class="resume-link">View My Resume</a></p>
-        <p><a href="{% url 'new_page' %}" class="sample-link">Sample Data pipelines</a></p>
-        <p><a href="https://www.linkedin.com/in/ehsansm/" class="sample-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></p> <!-- LinkedIn link -->
-        <p><a href="https://www.researchgate.net/profile/Ehsan-Soltanmohammadi" class="sample-link" target="_blank" rel="noopener noreferrer">Researchs</a></p> <!-- LinkedIn link -->
 
+        <main>
+            <h3>I'm Ehsan Soltanmohammadi, a Software Data Engineer with a deep passion for designing and implementing scalable big data pipelines. I specialize in optimizing ETL processes using Kubernetes, PySpark, and Apache Airflow, while leveraging cloud services like AWS and Azure. My expertise extends to integrating machine learning techniques, utilizing tools such as Scikit-learn, Pytorch, and TensorFlow to build predictive models and enhance data-driven insights in complex domains.</h3>
+            <h2></h2>
 
-    </main>
+            <div class="container">
+                <h1>Sample ETL Project Explanation</h1>
+                <p>
+                    In my portfolio, I've showcased a comprehensive ETL project where I developed a robust pipeline to handle real estate rental data. The ingestion layer utilized AWS Lambda functions, scheduled by AWS EventBridge, to periodically extract data from the Zillow API. This data, which includes rent prices for San Francisco (SF), San Diego (SD), and New York (NY), was initially stored in AWS Redshift. Following this, another Lambda function triggered data transformations as it arrived, cleaning and structuring the data before loading it into a PostgreSQL database. Finally, an interactive dashboard was created using Django, providing dynamic visualizations of the rental trends across the three cities.
+                </p>
+                <p><a href="{% url 'dashboard' %}" class="dashboard-link">Link to the Interactive Dashboard</a></p>
+                <h2>Steps</h2>
+                <ul>
+                    <li><strong>Extract</strong>: Use AWS Lambda functions, scheduled by AWS EventBridge, to periodically pull rental price data from the Zillow API for SF, SD, and NY.</li>
+                    <li><strong>Transform</strong>: Apply necessary data transformations with another Lambda function to clean and structure the data.</li>
+                    <li><strong>Load</strong>: Store the cleaned data in a PostgreSQL database after initial staging in AWS Redshift.</li>
+                    <li><strong>Visualize</strong>: Create an interactive dashboard in Django to provide dynamic visualizations of the rental price trends.</li>
+                </ul>
+            </div>
+            <img src="{% static 'images/lambda_pipeline.jpg' %}" alt=" " class="samplepipeline">
+            <h2></h2>
+            <p><a href="{% url 'resume' %}" class="resume-link">View My Resume</a></p>
+            <p><a href="{% url 'new_page' %}" class="sample-link">Sample Data Pipelines</a></p>
+            <p><a href="https://www.linkedin.com/in/ehsansm/" class="sample-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+            <p><a href="https://www.researchgate.net/profile/Ehsan-Soltanmohammadi" class="sample-link" target="_blank" rel="noopener noreferrer">Researchs</a></p>
+        </main>
 
     <main>
 

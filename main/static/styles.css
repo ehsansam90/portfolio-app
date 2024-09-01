@@ -40,6 +40,16 @@ header {
     display: block; /* Remove any space below the image */
     border-radius: 0; /* Ensure no border-radius is applied */
 }
+.samplepipeline {
+    width: auto; /* Allow the image to be its original width */
+    height: auto; /* Allow the image to be its original height */
+    max-width: 60%; /* Ensure it doesn’t overflow its container */
+    max-height: 60%; /* Ensure it doesn’t overflow its container */
+    border-radius: 0; /* Ensure no rounding of corners */
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+
 
 /* Larger Screens (Desktops) */
 @media (min-width: 1200px) {
@@ -130,6 +140,24 @@ li:hover {
 }
 
 /* Home Page Link */
+.dashboard-link {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding for size */
+    font-size: 16px; /* Adjust font size as needed */
+    color: #fff; /* Text color */
+    background-color: #769b20; /* Button background color */
+    border: none;
+    border-radius: 12px; /* Rounded corners for button */
+    text-decoration: none; /* Remove underline from the link */
+    text-align: center; /* Center text inside button */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions for hover effect */
+}
+
+.button-link:hover {
+    background-color: #36c912; /* Darker background color on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
 .resume-link {
     display: inline-block;
     margin-top: 20px;
@@ -138,9 +166,10 @@ li:hover {
     color: #fff;
     background-color: #1e88e5; /* Button color */
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 12px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .sample-link {
     display: inline-block;
@@ -150,7 +179,7 @@ li:hover {
     color: #fff;
     background-color: #1e88e5; /* Button color */
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 12px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
