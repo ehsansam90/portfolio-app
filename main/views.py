@@ -2,8 +2,6 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 
-import matplotlib.pyplot as plt
-import seaborn as sns
 from django.shortcuts import render
 
 from .models import newyorknearby_trends, sandiegonearby_trends, sanfrancisconearby_trends
