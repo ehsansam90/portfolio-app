@@ -2,7 +2,6 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from django.shortcuts import render
