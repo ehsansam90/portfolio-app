@@ -1,30 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dashboard of Rental Trends in Three Major U.S. Cities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 40px;
+        }
+        .chart-container {
+            width: 100%; /* Adjust the width as needed */
+            height: 500px; /* Set a fixed height or use a percentage */
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Dashboard</h1>
+    <div class="container">
+        <h1>Interactive Dashboard of Rental Trends in Three Major U.S. Cities</h1>
 
-    <!-- Canvas elements for Chart.js -->
-    
-    <!-- New York Nearby Trends Chart -->
-    <div>
-        <h2>New York Nearby Trends</h2>
-        <canvas id="newyorkTrendsChart" width="200" height="100"></canvas>
-    </div>
+        <!-- New York Nearby Trends Chart -->
+        <div class="chart-container">
+            <h2>New York Neighborhood Trends</h2>
+            <canvas id="newyorkTrendsChart" width="800" height="400"></canvas>
 
-    <!-- San Diego Nearby Trends Chart -->
-    <div>
-        <h2>San Diego Nearby Trends</h2>
-        <canvas id="sandiegoTrendsChart" width="200" height="100"></canvas>
-    </div>
+        </div>
 
-    <!-- San Francisco Nearby Trends Chart -->
-    <div>
-        <h2>San Francisco Nearby Trends</h2>
-        <canvas id="sanfranciscoTrendsChart" width="200" height="100"></canvas>
+        <!-- San Diego Nearby Trends Chart -->
+        <div class="chart-container">
+            <h2>San Diego Neighborhood Trends</h2>
+            <canvas id="sandiegoTrendsChart" width="800" height="400"></canvas>
+        </div>
+
+        <!-- San Francisco Nearby Trends Chart -->
+        <div class="chart-container">
+            <h2>San Francisco Neighborhood Trends</h2>
+            <canvas id="sanfranciscoTrendsChart" width="800" height="400"></canvas>
+
+        </div>
     </div>
 
     <script>
