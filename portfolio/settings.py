@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b@s%@2d*70&8e%qb_x^&*av#)8064ay3^v(j$##g$fz5lqc*9r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app','localhost','.now.sh','www.ehsansm-portfolio.com','ehsansm-portfolio.com','127.0.0.1']
 
@@ -135,8 +135,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'main/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "main/static")]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build','static')
 
