@@ -1,15 +1,25 @@
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
+from django.http import HttpResponse
+from .models import SurveySubmission
+from django.utils import timezone
+from django.urls import reverse
+
+
+
 
 from django.shortcuts import render
 
 from .models import newyorknearby_trends, sandiegonearby_trends, sanfrancisconearby_trends
+from .models import SurveyQuestion, SurveySubmission, SurveyResponse
 
 # Create your views here.
 # main/views.py
 def home(request):
-    return render(request, 'main/home.html')
+    submission_count = SurveySubmission.objects.count()
+    current_time = timezone.localtime(timezone.now())  # Get current time in the local time zone
+    return render(request, 'main/home.html', {'submission_count': submission_count, 'current_time': current_time})
 
 def resume(request):
     # Hardcoded resume data
@@ -161,4 +171,35 @@ def dashboard_view(request):
         'sanfrancisco_fields': sanfrancisco_fields,
     }
     return render(request, 'main/dashboard.html', context)
+
+def survey(request):
+    if request.method == "POST":
+        # Create a new survey submission record
+        SurveySubmission.objects.create(user_ip=request.META.get('REMOTE_ADDR'))
+
+        questions = SurveyQuestion.objects.all()
+        for question in questions:
+            if question.question_type == 'text' or question.question_type == 'rating':
+                user_response = request.POST.get(f'question_{question.id}')
+                if user_response:
+                    SurveyResponse.objects.create(
+                        question=question,
+                        user_response=user_response,
+                        user_ip=request.META.get('REMOTE_ADDR')
+                    )
+            elif question.question_type == 'multiple_choice':
+                user_response = request.POST.getlist(f'question_{question.id}_options')
+                for option in user_response:
+                    SurveyResponse.objects.create(question=question, user_response=option, user_ip=request.META.get('REMOTE_ADDR'))
+                
+        
+        
+        # Redirect to a thank you page after submission
+        return redirect(reverse('survey_thank_you'))
+
+    questions = SurveyQuestion.objects.all()
+    return render(request, 'main/survey.html', {'questions': questions})
+
+def survey_thank_you(request):
+    return render(request, 'main/thank_you.html')
 

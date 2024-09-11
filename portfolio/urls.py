@@ -21,11 +21,15 @@ from django.conf.urls.static import static
 from main import views
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.home, name='home'),  # Home page route
     path('resume/', views.resume, name='resume'), # Resume page route
     path('new-page/', views.new_page, name='new_page'),
     path('send_message/', views.send_message, name='send_message'),
     path('dashboard/', views.dashboard_view, name='dashboard'),
+    path('survey/', views.survey, name='survey'),
+    path('survey/thank-you/', views.survey_thank_you, name='survey_thank_you'),
+
 ]
 
 # urlpatterns += static(setting.MEDIA_URL, document_root=setting.MEDIA_ROOT)

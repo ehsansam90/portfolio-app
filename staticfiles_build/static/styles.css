@@ -107,12 +107,14 @@ h2 {
 
 p {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 a {
     color: #1e88e5; /* Consistent blue color for links */
     text-decoration: none;
     font-weight: bold; /* Bold links for emphasis */
+    text-align: center;
 }
 
 a:hover {
@@ -348,3 +350,119 @@ li {
 #contact-form button[type="submit"]:hover {
     background-color: #218838;
 }
+
+.survey-section {
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.survey-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.survey-button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the info box */
+.info-box {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid #28a745;
+    border-radius: 8px;
+    background-color: #e9f7ef;
+    font-size: 18px;
+}
+
+.info-box p {
+    margin: 10px 0;
+}
+
+.info-box strong {
+    color: #333;
+}
+
+#current-time {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    color: #cb2121;
+}
+
+.survey-section {
+    margin: 30px auto; /* Center align with automatic margins */
+    padding: 15px;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 100%; /* Max width for better alignment */
+    text-align: center; /* Center align all text and inline elements */
+}
+
+/* Center align headings and anchor tags within the survey-section */
+.survey-section h1, 
+.survey-section h2, 
+.survey-section h3, 
+.survey-section h4, 
+.survey-section h5, 
+.survey-section h6,
+.survey-section a {
+    margin: 0 auto; /* Center align headings and links */
+    display: inline-block; /* Ensure they are treated as inline elements for centering */
+}
+
+
+.container {
+    margin: 30px auto; /* Center align with automatic margins */
+    padding: 15px;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 100%; /* Max width for better alignment */
+    text-align: center; /* Center align all text and inline elements */
+}
+
+/* Center align headings and anchor tags within the survey-section */
+.container h1, 
+.container h2, 
+.container h3, 
+.container h4, 
+.container h5, 
+.container h6,
+.container a {
+    margin: 0 auto; /* Center align headings and links */
+    display: inline-block; /* Ensure they are treated as inline elements for centering */
+}
+
+.wlccontainer {
+    margin: 30px auto; /* Center align with automatic margins */
+    padding: 15px;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    background-color: #cbd2f1;
+    max-width: 100%; /* Max width for better alignment */
+    text-align: center; /* Center align all text and inline elements */
+}
+
+/* Center align headings and anchor tags within the survey-section */
+.wlccontainer h1, 
+.wlccontainer h2, 
+.wlccontainer h3, 
+.wlccontainer h4, 
+.wlccontainer h5, 
+.wlccontainer h6,
+.wlccontainer a {
+    margin: 0 auto; /* Center align headings and links */
+    display: inline-block; /* Ensure they are treated as inline elements for centering */
+}
+

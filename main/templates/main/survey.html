@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <p><a href="{% url 'home' %}" class="resume-link">Back to Home</a></p>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Data Engineering Survey</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            margin: 20px 0;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .question input[type="text"],
+        .question input[type="radio"],
+        .question input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .question div {
+            margin-top: 10px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #4cae4c;
+        }
+        .question-number {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Healthcare Data Engineering Survey</h1>
+        <form id="survey-form" method="POST" action="{% url 'survey' %}">
+            {% csrf_token %}
+            
+            {% for question in questions %}
+                <div class="question">
+                    <label for="question_{{ question.id }}">
+                        <span class="question-number">{{ forloop.counter }}.</span>
+                        {{ question.question_text }}
+                    </label>
+                    
+                    {% if question.question_type == "text" %}
+                        <input type="text" id="question_{{ question.id }}" name="question_{{ question.id }}" size="50" placeholder="Your answer here">
+                        
+                    {% elif question.question_type == "rating" %}
+                        <div>
+                            {% for value in "12345"|slice:":5" %}
+                                <label>
+                                    <input type="radio" id="question_{{ question.id }}_{{ value }}" name="question_{{ question.id }}" value="{{ value }}" required>
+                                    {{ value }}
+                                </label>
+                            {% endfor %}
+                        </div>
+                        
+                    {% elif question.question_type == "multiple_choice" %}
+                        <div>
+                            {% for option in question.options.all %}
+                                <label>
+                                    <input type="checkbox" id="question_{{ question.id }}_{{ option.value }}" name="question_{{ question.id }}_options" value="{{ option.value }}">
+                                    {{ option.label }}
+                                </label><br>
+                            {% endfor %}
+                        </div>
+                        <p class="error" id="error-question-{{ question.id }}" style="display: none;">Please select at least one option.</p>
+                        
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
+            <button type="submit" class="submit-btn">Submit Survey</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('survey-form').addEventListener('submit', function(event) {
+            var isValid = true;
+            {% for question in questions %}
+                {% if question.question_type == "multiple_choice" %}
+                    var checkboxes = document.querySelectorAll('input[name="question_{{ question.id }}_options"]');
+                    var isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+                    var errorElement = document.getElementById('error-question-{{ question.id }}');
+                    if (!isChecked) {
+                        isValid = false;
+                        errorElement.style.display = 'block';
+                    } else {
+                        errorElement.style.display = 'none';
+                    }
+                {% endif %}
+            {% endfor %}
+            
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
