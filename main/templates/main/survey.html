@@ -10,12 +10,14 @@
     
 </head>
 <body>
-    <div class="container">
+    <div class="survey-container">
         <h1>Healthcare Data Engineering Survey</h1>
         <form id="survey-form" method="POST" action="{% url 'survey' %}">
             {% csrf_token %}
             
             {% for question in questions %}
+              <h2></h2>
+
                 <div class="question">
                     <label for="question_{{ question.id }}">
                         <span class="question-number">{{ forloop.counter }}.</span>
@@ -31,9 +33,11 @@
                                 <label>
                                     <input type="radio" id="question_{{ question.id }}_{{ value }}" name="question_{{ question.id }}" value="{{ value }}" required>
                                     {{ value }}
+                                    <h2></h2>
                                 </label>
                             {% endfor %}
                         </div>
+                        
                         
                     {% elif question.question_type == "multiple_choice" %}
                         <div>
@@ -41,7 +45,9 @@
                                 <label>
                                     <input type="checkbox" id="question_{{ question.id }}_{{ option.value }}" name="question_{{ question.id }}_options" value="{{ option.value }}">
                                     {{ option.label }}
+
                                 </label><br>
+
                             {% endfor %}
                         </div>
                         <p class="error" id="error-question-{{ question.id }}" style="display: none;">Please select at least one option.</p>
@@ -50,7 +56,7 @@
                 </div>
             {% endfor %}
             
-            <button type="submit" class="submit-btn">Submit Survey</button>
+            <button type="submit">Submit Survey</button>
         </form>
     </div>
 

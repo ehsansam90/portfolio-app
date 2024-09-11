@@ -1,4 +1,4 @@
-/*  */
+/* styles.css */
 
 /* Basic reset */
 * {
@@ -422,6 +422,8 @@ li {
 }
 
 
+
+
 .container {
     margin: 30px auto; /* Center align with automatic margins */
     padding: 15px;
@@ -465,4 +467,47 @@ li {
     margin: 0 auto; /* Center align headings and links */
     display: inline-block; /* Ensure they are treated as inline elements for centering */
 }
+
+.survey-container {
+    margin: 40px auto; /* Center the container */
+    padding: 15px;
+    border: 2px solid #007BFF;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    max-width: 80%; /* Adjust to fit the content better */
+    text-align: left; /* Left-align text in the main container */
+}
+
+/* Center align only headings and links within the survey-container */
+.survey-container h1, 
+.survey-container h2, 
+.survey-container h3, 
+.survey-container h4, 
+.survey-container h5, 
+.survey-container h6,
+.survey-container a {
+    text-align: center; /* Center align these elements */
+    display: block; /* Ensure they occupy full width for centering */
+    margin: 10px 0; /* Add space above and below */
+}
+
+/* Example Button Style: Rounded Corners and Centered */
+.survey-container button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px;
+    cursor: pointer;
+    display: block; /* Center block-level elements */
+    margin: 20px auto; /* Center the button horizontally */
+    transition: background-color 0.3s ease;
+}
+
+.survey-container button:hover {
+    background-color: #0056b3;
+}
+
+
 
